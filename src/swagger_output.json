@@ -1,0 +1,360 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API de Inscripciones Académicas",
+    "description": "Documentación de la API REST del MP-S2",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/api/estudiantes/": {
+      "get": {
+        "tags": [
+          "Estudiantes"
+        ],
+        "summary": "Listar Estudiantes",
+        "description": "",
+        "parameters": [
+          {
+            "name": "bootcamp",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "categoria",
+            "in": "query",
+            "description": "Filtrar por bootcamp",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de productos",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 2
+                  },
+                  "nombre": {
+                    "type": "string",
+                    "example": "Luis Mendoza"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "luis.mendoza@example.com"
+                  },
+                  "bootcamp": {
+                    "type": "string",
+                    "example": "Backend"
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Estudiantes"
+        ],
+        "summary": "Registrar una nueva estudiante",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Datos de la estudiante",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nombre": {
+                  "type": "string",
+                  "example": "Ana Torres"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "ana.torres@example.com"
+                },
+                "bootcamp": {
+                  "type": "string",
+                  "example": "Frontend"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "estudiante creada correctamente",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 6
+                },
+                "nombre": {
+                  "type": "string",
+                  "example": "Ana Torres"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "ana.torres@example.com"
+                },
+                "bootcamp": {
+                  "type": "string",
+                  "example": "Frontend"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Datos incorrectos",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "400 Datos incorrectos"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/estudiantes/{id}": {
+      "get": {
+        "tags": [
+          "Estudiantes"
+        ],
+        "summary": "Obtener estudiante por ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID numérico del estudiante"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Producto encontrado",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 2
+                },
+                "nombre": {
+                  "type": "string",
+                  "example": "Luis Mendoza"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "luis.mendoza@example.com"
+                },
+                "bootcamp": {
+                  "type": "string",
+                  "example": "Backend"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "404": {
+            "description": "Producto no encontrado",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "404 Producto no encontrado"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Estudiantes"
+        ],
+        "summary": "Actualizar una estudiante",
+        "description": "Actualiza los datos de una estudiante existente.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID numérico de la estudiante",
+            "minimum": 1,
+            "example": 1
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Datos actualizados de la estudiante",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nombre": {
+                  "type": "string",
+                  "example": "Ana Torres"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "ana.torres@example.com"
+                },
+                "bootcamp": {
+                  "type": "string",
+                  "example": "Frontend"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "estudiante actualizada correctamente",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "nombre": {
+                  "type": "string",
+                  "example": "Ana Torres"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "ana.torres@example.com"
+                },
+                "bootcamp": {
+                  "type": "string",
+                  "example": "Frontend"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "404": {
+            "description": "estudiante no encontrado",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "404 Not Found"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Estudiantes"
+        ],
+        "summary": "Eliminar un estudiante",
+        "description": "Elimina un estudiante existente según su ID y devuelve el estudiante eliminado.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID numérico del estudiante a eliminar",
+            "example": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Estudiante eliminado exitosamente",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "nombre": {
+                  "type": "string",
+                  "example": "Ana Torres"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "ana.torres@example.com"
+                },
+                "bootcamp": {
+                  "type": "string",
+                  "example": "Frontend"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "404": {
+            "description": "Estudiante no encontrado",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "404 Not Found"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
