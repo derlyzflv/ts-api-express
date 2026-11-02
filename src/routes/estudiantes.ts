@@ -5,22 +5,22 @@ const router: RouterType = Router();
 
 interface Estudiante {
     id: number;
-    nombre: string;
+    name: string;
     email: string;
     bootcamp: string;
 }
 
 const estudiantes: Estudiante[] = [
-    { id: 1, nombre: "Ana Torres", email: "ana.torres@example.com", bootcamp: "Frontend" },
-    { id: 2, nombre: "Luis Mendoza", email: "luis.mendoza@example.com", bootcamp: "Backend" },
-    { id: 3, nombre: "María Fernández", email: "maria.fernandez@example.com", bootcamp: "Frontend" },
-    { id: 4, nombre: "Carlos Ramírez", email: "carlos.ramirez@example.com", bootcamp: "Backend" },
-    { id: 5, nombre: "Lucía Vargas", email: "lucia.vargas@example.com", bootcamp: "Fullstack" },
-    { id: 6, nombre: "Diego Castillo", email: "diego.castillo@example.com", bootcamp: "Backend" },
-    { id: 7, nombre: "Sofía Herrera", email: "sofia.herrera@example.com", bootcamp: "Fullstack" },
-    { id: 8, nombre: "Jorge Flores", email: "jorge.flores@example.com", bootcamp: "Backend" },
-    { id: 9, nombre: "Valentina Rojas", email: "valentina.rojas@example.com", bootcamp: "Fullstack" },
-    { id: 10, nombre: "Andrés Morales", email: "andres.morales@example.com", bootcamp: "Backend" },
+    { id: 1, name: "Ana Torres", email: "ana.torres@example.com", bootcamp: "Frontend" },
+    { id: 2, name: "Luis Mendoza", email: "luis.mendoza@example.com", bootcamp: "Backend" },
+    { id: 3, name: "María Fernández", email: "maria.fernandez@example.com", bootcamp: "Frontend" },
+    { id: 4, name: "Carlos Ramírez", email: "carlos.ramirez@example.com", bootcamp: "Backend" },
+    { id: 5, name: "Lucía Vargas", email: "lucia.vargas@example.com", bootcamp: "Fullstack" },
+    { id: 6, name: "Diego Castillo", email: "diego.castillo@example.com", bootcamp: "Backend" },
+    { id: 7, name: "Sofía Herrera", email: "sofia.herrera@example.com", bootcamp: "Fullstack" },
+    { id: 8, name: "Jorge Flores", email: "jorge.flores@example.com", bootcamp: "Backend" },
+    { id: 9, name: "Valentina Rojas", email: "valentina.rojas@example.com", bootcamp: "Fullstack" },
+    { id: 10, name: "Andrés Morales", email: "andres.morales@example.com", bootcamp: "Backend" },
 ];
 
 let idNext: number = 11;
@@ -40,7 +40,7 @@ router.get('/', (req: Request, res: Response) => {
         description: 'Lista de productos',
         schema: [{
             id: 2,
-            nombre: "Luis Mendoza",
+            name: "Luis Mendoza",
             email: "luis.mendoza@example.com",
             bootcamp: "Backend"
         }]
@@ -73,7 +73,7 @@ router.get('/:id', (req: Request, res: Response) => {
       schema:
         {
             id: 2,
-            nombre: "Luis Mendoza",
+            name: "Luis Mendoza",
             email: "luis.mendoza@example.com",
             bootcamp: "Backend"
         }
@@ -91,8 +91,8 @@ router.get('/:id', (req: Request, res: Response) => {
     res.status(200).json(estudiantes[indice]);
 });
 
-// {"nombre": "Mario", "email": "mario@gmail.com", "bootcamp": "frontend"}
-// {nombre: 'Mario', email: 'mario@gmail.com', bootcamp: 'frontend'}
+// {"name": "Mario", "email": "mario@gmail.com", "bootcamp": "frontend"}
+// {name: 'Mario', email: 'mario@gmail.com', bootcamp: 'frontend'}
 router.post('/', (req: Request, res: Response) => {
     /*
         #swagger.tags = ['Estudiantes']
@@ -102,7 +102,7 @@ router.post('/', (req: Request, res: Response) => {
             description: 'Datos de la estudiante',
             required: true,
             schema: {
-                nombre: "Ana Torres",
+                name: "Ana Torres",
                 email: "ana.torres@example.com",
                 bootcamp: "Frontend"
             }
@@ -111,7 +111,7 @@ router.post('/', (req: Request, res: Response) => {
             description: 'estudiante creada correctamente',
             schema: {
                 id: 6,
-                nombre: "Ana Torres",
+                name: "Ana Torres",
                 email: "ana.torres@example.com",
                 bootcamp: "Frontend"
             }
@@ -122,14 +122,14 @@ router.post('/', (req: Request, res: Response) => {
         }
     */
     try {
-        const { nombre, email, bootcamp } = req.body;
+        const { name, email, bootcamp } = req.body;
         if (!email) {
             res.status(400).json({ error: '400 Email obligatorio' });
             return
         }
         const estudiante: Estudiante = {
             id: idNext++,
-            nombre: nombre,
+            name: name,
             email: email,
             bootcamp: bootcamp
         }
@@ -161,7 +161,7 @@ router.put('/:id', (req: Request, res: Response) => {
             required: true,
             schema: 
               {
-                nombre: "Ana Torres",
+                name: "Ana Torres",
                 email: "ana.torres@example.com",
                 bootcamp: "Frontend"
               }
@@ -171,7 +171,7 @@ router.put('/:id', (req: Request, res: Response) => {
             description: 'estudiante actualizada correctamente',
             schema: {
                 id: 1,
-                nombre: "Ana Torres",
+                name: "Ana Torres",
                 email: "ana.torres@example.com",
                 bootcamp: "Frontend"
             }
@@ -210,7 +210,7 @@ router.delete('/:id', (req: Request, res: Response) => {
             description: 'Estudiante eliminado exitosamente',
             schema: {
                 id: 1,
-                nombre: "Ana Torres",
+                name: "Ana Torres",
                 email: "ana.torres@example.com",
                 bootcamp: "Frontend"
             }
