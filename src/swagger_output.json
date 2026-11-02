@@ -21,7 +21,7 @@
         }
       }
     },
-    "/api/estudiantes/": {
+    "/api/students/": {
       "get": {
         "tags": [
           "Estudiantes"
@@ -31,11 +31,6 @@
         "parameters": [
           {
             "name": "bootcamp",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "categoria",
             "in": "query",
             "description": "Filtrar por bootcamp",
             "required": false,
@@ -54,7 +49,7 @@
                     "type": "number",
                     "example": 2
                   },
-                  "nombre": {
+                  "name": {
                     "type": "string",
                     "example": "Luis Mendoza"
                   },
@@ -90,7 +85,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "nombre": {
+                "name": {
                   "type": "string",
                   "example": "Ana Torres"
                 },
@@ -116,7 +111,7 @@
                   "type": "number",
                   "example": 6
                 },
-                "nombre": {
+                "name": {
                   "type": "string",
                   "example": "Ana Torres"
                 },
@@ -155,7 +150,7 @@
         }
       }
     },
-    "/api/estudiantes/{id}": {
+    "/api/students/{id}": {
       "get": {
         "tags": [
           "Estudiantes"
@@ -181,7 +176,7 @@
                   "type": "number",
                   "example": 2
                 },
-                "nombre": {
+                "name": {
                   "type": "string",
                   "example": "Luis Mendoza"
                 },
@@ -240,7 +235,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "nombre": {
+                "name": {
                   "type": "string",
                   "example": "Ana Torres"
                 },
@@ -266,7 +261,7 @@
                   "type": "number",
                   "example": 1
                 },
-                "nombre": {
+                "name": {
                   "type": "string",
                   "example": "Ana Torres"
                 },
@@ -327,7 +322,7 @@
                   "type": "number",
                   "example": 1
                 },
-                "nombre": {
+                "name": {
                   "type": "string",
                   "example": "Ana Torres"
                 },

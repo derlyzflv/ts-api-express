@@ -30,7 +30,7 @@ router.get('/', (req: Request, res: Response) => {
     /*
         #swagger.tags = ['Estudiantes']
         #swagger.summary = 'Listar Estudiantes'
-        #swagger.parameters['categoria'] = {
+        #swagger.parameters['bootcamp'] = {
             in: 'query',
             description: 'Filtrar por bootcamp',
             required: false,
